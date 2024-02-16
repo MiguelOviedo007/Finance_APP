@@ -5,4 +5,4 @@ pandas_datareader==0.10.0
 streamlit==1.30.0
 streamlit_tags==1.2.8
 yfinance==0.2.12
-pyportfolioopt==1.5.5
+pyportfolioopt
