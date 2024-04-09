@@ -1,4 +1,4 @@
-# Finance_APP
+# Portfolio Management App
 
 [https://financeapp-rujbfws4xwvyzs3y2z8utf.streamlit.app/](https://portfoliomanagementfinance.streamlit.app/)
 
