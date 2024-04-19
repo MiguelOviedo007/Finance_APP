@@ -14,17 +14,17 @@ with st.sidebar:
 
     # Creare il DataFrame in euro
     portafoglio = [
-        ('MMM', 2578.64),
-        ('ACN', 1187.65),
-        ('BABA', 323.60),
-        ('CHK', 2953.65),
-        ('MPW', 468.86),
-        ('SRG.MI', 425),
-        ('SNOW', 697.23),
-        ('SOLV', 421.14),
-        ('DIS', 105.64),
-        ('EUNA.DE', 93.04),
-        ('VWCE.DE', 3457.80)]
+        ('MMM', 2746.1),
+        ('ACN', 1264.78),
+        ('BABA', 344.613),
+        ('CHK', 3145.46),
+        ('MPW', 499.30),
+        ('SRG.MI', 452.6),
+        ('SNOW', 742.50),
+        ('SOLV', 448.48),
+        ('DIS', 112.499),
+        ('EUNA.DE', 99.08),
+        ('VWCE.DE', 3682.35)]
 
     df_portfolio = pd.DataFrame(portafoglio, columns=['Stock', 'Amount'])
 
