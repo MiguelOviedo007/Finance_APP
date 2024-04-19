@@ -12,18 +12,19 @@ with st.sidebar:
 
     st.title("Compila le informazioni del tuo portafoglio attuale:")
 
-    # Creare il DataFrame
+    # Creare il DataFrame in euro
     portafoglio = [
-        ('MMM', 2635.25),
-        ('ACN', 1361.1),
-        ('BABA', 339.62),
-        ('CHK', 2601.27),
-        ('MPW', 340.17),
-        ('SRG.MI', 435.8),
-        ('SNOW', 430.19),
-        ('DIS', 101.59),
-        ('EUNA.DE', 93.29),
-        ('VWCE.DE', 3408.6)]
+        ('MMM', 2578.64),
+        ('ACN', 1187.65),
+        ('BABA', 323.60),
+        ('CHK', 2953.65),
+        ('MPW', 468.86),
+        ('SRG.MI', 425),
+        ('SNOW', 697.23),
+        ('SOLV', 421.14),
+        ('DIS', 105.64),
+        ('EUNA.DE', 93.04),
+        ('VWCE.DE', 3457.80)]
 
     df_portfolio = pd.DataFrame(portafoglio, columns=['Stock', 'Amount'])
 
