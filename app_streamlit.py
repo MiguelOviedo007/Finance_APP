@@ -10,7 +10,7 @@ lista_caricata = name_tickers()
 
 with st.sidebar:
 
-    st.title("Compila le informazioni del tuo portafoglio attuale:")
+    st.title("Fill in your current portfolio information:")
 
     # Creare il DataFrame in euro
     portafoglio = [
@@ -42,7 +42,7 @@ with st.sidebar:
 
     # Seleziona nuovi stock da investire:
     new_tickers = st_tags_sidebar(
-        label='# Inserisci gli stock di interesse:',
+        label='# Enter stocks of interest:',
         text='Press enter to add more',
         suggestions=lista_caricata,
         maxtags = 5,
