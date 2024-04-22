@@ -48,7 +48,7 @@ with st.sidebar:
         maxtags = 5,
         key='2')
 
-    margine_disponibile = st.number_input("Inserisci il totale da investire:", min_value=0, step=100)
+    margine_disponibile = st.number_input("Enter the total amount to invest:", min_value=0, step=100)
 
     actual_tickers = list(df_portfolio.Stock)
     
@@ -57,9 +57,9 @@ with st.sidebar:
     total_portfolio_value = importi_investiti.sum() + margine_disponibile
 
 #MAIN
-st.title('Ottimizzazione del portafoglio - Markowitz')
+st.title('Portfolio Optimization - Markowitz')
 
-if st.sidebar.button('CALCOLARE PORTAFOGLIO', use_container_width=True):   
+if st.sidebar.button('CALCULATE THE BEST PORTFOLIO', use_container_width=True):   
     # Calcoli interni
     pesi_actual, pesi_nuovi = pesi_actual_new(importi_investiti, margine_disponibile)
 
