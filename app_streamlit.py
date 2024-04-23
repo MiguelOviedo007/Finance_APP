@@ -45,7 +45,7 @@ with st.sidebar:
         label='# Enter stocks of interest:',
         text='Press enter to add more',
         suggestions=lista_caricata,
-        maxtags = 5,
+        maxtags = 10,
         key='2')
 
     margine_disponibile = st.number_input("Enter the total amount to invest:", min_value=0, step=100)
@@ -59,7 +59,7 @@ with st.sidebar:
 #MAIN
 st.title('Portfolio Optimization - Markowitz')
 
-if st.sidebar.button('CALCULATE THE BEST PORTFOLIO', use_container_width=True):   
+if st.sidebar.button('CALCULATE BEST PORTFOLIO', use_container_width=True):   
     # Calcoli interni
     pesi_actual, pesi_nuovi = pesi_actual_new(importi_investiti, margine_disponibile)
 
@@ -77,8 +77,8 @@ if st.sidebar.button('CALCULATE THE BEST PORTFOLIO', use_container_width=True):
     varianza_stocks = np.dot(pesi_actual.T, np.dot(S_actual, pesi_actual ))
     volatilita_stocks = np.sqrt(varianza_stocks)
 
-    st.markdown(f"Il rendimento totale annualizzato è pari al {round(rendimenti_stocks * 100, 2)}%")
-    st.markdown(f"La volatilità totale annualizzata è pari al {round(volatilita_stocks * 100, 2)}%")
+    st.markdown(f"The total annualized return is {round(rendimenti_stocks * 100, 2)}%")
+    st.markdown(f"The total annualized volatility is {round(volatilita_stocks * 100, 2)}%")
 
     # Plotting
     ef_max_sharpe, weights_max_sharpe, ef_actual, weights_actual = plotting_ef(mu, S, actual_tickers, new_tickers, pesi_actual, pesi_nuovi, w)
@@ -89,22 +89,22 @@ if st.sidebar.button('CALCULATE THE BEST PORTFOLIO', use_container_width=True):
     performance_new    = ef_max_sharpe.portfolio_performance(verbose=True)
     col1,col2 = st.columns(2)
 
-    col1.markdown(f"Le perfomance del portafoglio attuale risulta avere un rendimento medio del **{round(performance_actual[0] * 100, 2)}%** e una variabilità del **{round(performance_actual[1] * 100, 2)}%**. L'indice Sharpe Ratio risulta pari a **{round(performance_actual[2], 2)}** ")
-    col2.markdown(f"Le perfomance del portafoglio nuovo risulta avere un rendimento medio del **{round(performance_new[0] * 100, 2)}%** e una variabilità del **{round(performance_new[1] * 100, 2)}%**. L'indice Sharpe Ratio risulta pari a **{round(performance_new[2], 2)}** ")
+    col1.markdown(f"The performance of the current portfolio has an average return of **{round(performance_actual[0] * 100, 2)}%** e una variabilità del **{round(performance_actual[1] * 100, 2)}%**. L'indice Sharpe Ratio risulta pari a **{round(performance_actual[2], 2)}** ")
+    col2.markdown(f"The perfomance of the new portfolio has an average return of **{round(performance_new[0] * 100, 2)}%** e una variabilità del **{round(performance_new[1] * 100, 2)}%**. L'indice Sharpe Ratio risulta pari a **{round(performance_new[2], 2)}** ")
 
-    col1.markdown("Pesi Portfolio Actual:")
+    col1.markdown("Current Portfolio Weights:")
     somma_pesi_nuovi = pesi_nuovi.sum()
     weights_actual_rapportati = {chiave: valore * somma_pesi_nuovi for chiave, valore in weights_actual.items()}
 
     for chiave, valore in weights_actual_rapportati.items():
         col1.markdown(f"{chiave}: {round(valore * 100, 2)}%")
 
-    col2.markdown("Pesi Max Sharpe:")
+    col2.markdown("Max Sharpe Weights:")
     for chiave, valore in weights_max_sharpe.items():
         col2.markdown(f"{chiave}: {round(valore * 100, 2)}%")
 
     # Quantità da investire:
-    st.markdown("### Numero di azioni da investire secondo l'indice Sharpe Ratio:") 
+    st.markdown("### Number of stocks to invest according to Sharpe Ratio:") 
     alloca = allocazione(matrice_prezzi, weights_max_sharpe, total_portfolio_value)
 
     styled_df = alloca.style.set_properties(**{
